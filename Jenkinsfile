@@ -8,7 +8,7 @@ tools {
 stages {
     stage("checkout"){
         steps{
-            git branch: 'main', credentialsId: 'github', url: 'https://github.com/sriraju12/spring-cicd.git'
+            git branch: 'main', credentialsId: 'github-tokens', url: 'https://github.com/sriraju12/spring-cicd.git'
         }
     }
 
@@ -57,7 +57,7 @@ stages {
             GIT_USER_NAME = "sriraju12"
         }
         steps {
-            withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+            withCredentials([string(credentialsId: 'ggithub-tokens', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                      git config user.email "rajukrishnamsetty9@gmail.com"
                      git config user.name "sriraju"
