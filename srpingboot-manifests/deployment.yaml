@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image:  sriraju12/spring-app:52
+          image:  sriraju12/spring-app:latest
           ports:
             - containerPort: 9090
