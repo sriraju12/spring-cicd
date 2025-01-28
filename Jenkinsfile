@@ -57,7 +57,7 @@ stages {
             GIT_USER_NAME = "sriraju12"
         }
         steps {
-            withCredentials([string(credentialsId: 'ggithub-tokens', variable: 'GITHUB_TOKEN')]) {
+            withCredentials([string(credentialsId: 'github-tokens', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                      git config user.email "rajukrishnamsetty9@gmail.com"
                      git config user.name "sriraju"
