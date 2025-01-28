@@ -63,7 +63,7 @@ stages {
                      git config user.name "sriraju"
                      sed -i '' "s|image: sriraju12/spring-app:.*|image: sriraju12/spring-app:${BUILD_NUMBER}|g" srpingboot-manifests/deployment.yaml
                      git add srpingboot-manifests/deployment.yaml
-                     git commit -m "update deployement image with latest build number"
+                     git commit -m "update deployement image with latest build number" || echo "No changes to commit"
                      git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                    ''' 
             }
