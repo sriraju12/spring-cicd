@@ -28,7 +28,7 @@ stages {
         steps {
             script {
                 withSonarQubeEnv(credentialsId: 'jenkins-sonar-token'){
-                    sh 'mvn sonar: sonar'
+                    sh 'mvn sonar:sonar'
                 }
             }
         }
