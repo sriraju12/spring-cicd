@@ -8,7 +8,7 @@ tools {
 stages {
     stage("checkout"){
         steps{
-            git branch: 'main', credentialsId: 'github', url: 'https://github.com/sriraju12/spring-demo.git'
+            git branch: 'main', credentialsId: 'github', url: 'https://github.com/sriraju12/spring-cicd.git'
         }
     }
 
