@@ -5,6 +5,9 @@ tools {
     jdk 'Jdk17'
     maven 'Maven3'
 }
+ environment {
+        DOCKER_IMAGE = "sriraju12/spring-app:${BUILD_NUMBER}"
+    }   
 stages {
     stage("checkout"){
         steps{
@@ -36,7 +39,6 @@ stages {
 
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "sriraju12/spring-app:${BUILD_NUMBER}"
         REGISTRY_CREDENTIALS = credentials('dockerhub-token')
       }
       steps {
@@ -50,6 +52,14 @@ stages {
         }
       }
     }
+
+    stage('Docker Image Scan') {
+       steps {
+                sh "/opt/homebrew/bin/trivy image --format table -o trivy-image-report.html ${DOCKER_IMAGE}"
+            }
+        }
+
+    
 
     stage('update deployement file') {
         environment {
@@ -79,7 +89,7 @@ stages {
                 "Build Number: ${env.BUILD_NUMBER}<br/>" +
                 "URL: ${env.BUILD_URL}<br/>",
             to: 'rajukrishnamsetty9@gmail.com',                                
-            attachmentsPattern: 'trivy-fs-reports.html,trivy-image-report.html'
+            attachmentsPattern: 'trivy-image-report.html'
         }
     }   
 }
