@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - sriraju12/spring-app:58
