@@ -142,6 +142,8 @@ jobs:
 
       - name: Commit and push changes    
         run: |
+          git config --global user.name "sriraju"
+          git config --global user.email "rajukrishnamsetty9@gmail.com"
           git add srpingboot-manifests/deployment.yaml
           git commit -m "Update Kubernetes deployment with new image tag: ${{ github.sha }} [skip ci]" || echo "No changes to commit"
           git push
