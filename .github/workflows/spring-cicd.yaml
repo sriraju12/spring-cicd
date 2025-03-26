@@ -138,7 +138,7 @@ jobs:
 
           NEW_IMAGE="$DOCKERHUB_USERNAME/github-spring-cicd:$IMAGE_TAG"
 
-          sed -i "s|image: ${DOCKER_USERNAME}/github-spring-cicd:.*|image: ${DOCKER_USERNAME}/github-spring-cicd:${IMAGE_TAG}|g" srpingboot-manifests/deployment.yaml
+          sed -i '' "s|image: ${DOCKER_USERNAME}/github-spring-cicd:.*|image: ${DOCKER_USERNAME}/github-spring-cicd:${IMAGE_TAG}|g" srpingboot-manifests/deployment.yaml
 
           echo "Updated deployment.yaml with new image: $NEW_IMAGE"
 
