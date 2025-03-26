@@ -135,13 +135,13 @@ jobs:
 
           NEW_IMAGE="$DOCKERHUB_USERNAME/github-spring-cicd:$IMAGE_TAG"
 
-          sed -i "s|image: ${DOCKERHUB_USERNAME}/.*|image: ${NEW_IMAGE}|g" springboot-manifests/deployment.yaml
+          sed -i "s|image: ${DOCKERHUB_USERNAME}/.*|image: ${NEW_IMAGE}|g" srpingboot-manifests/deployment.yaml
 
           echo "Updated deployment.yaml with new image: $NEW_IMAGE"
 
       - name: Commit and push changes    
         run: |
-          git add springboot-manifests/deployment.yaml
+          git add srpingboot-manifests/deployment.yaml
           git commit -m "Update Kubernetes deployment with new image tag: ${{ github.sha }} [skip ci]" || echo "No changes to commit"
           git push
         
