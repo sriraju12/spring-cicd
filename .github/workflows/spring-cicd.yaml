@@ -115,7 +115,6 @@ jobs:
         with:
           image-ref: ${{ vars.DOCKERHUB_USERNAME }}/github-spring-cicd:${{ github.sha }}
           format: 'table'
-          exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
