@@ -133,12 +133,12 @@ jobs:
       - name: Update k8s deployment manifest
         env:
           IMAGE_TAG: ${{ github.sha }}
-          DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+          DOCKER_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
         run: |
 
           NEW_IMAGE="$DOCKERHUB_USERNAME/github-spring-cicd:$IMAGE_TAG"
 
-          sed -i "s|image: ${DOCKERHUB_USERNAME}/.*|image: ${NEW_IMAGE}|g" srpingboot-manifests/deployment.yaml
+          sed -i "s|image: ${DOCKER_USERNAME}/github-spring-cicd:.*|image: ${DOCKER_USERNAME}/github-spring-cicd:${IMAGE_TAG}|g" srpingboot-manifests/deployment.yaml
 
           echo "Updated deployment.yaml with new image: $NEW_IMAGE"
 
@@ -147,7 +147,7 @@ jobs:
           git config --global user.name "sriraju"
           git config --global user.email "rajukrishnamsetty9@gmail.com"
           git add srpingboot-manifests/deployment.yaml
-          git commit -m "Update Kubernetes deployment with new image tag: ${{ github.sha }} [skip ci]" || echo "No changes to commit"
+          git commit -m "Update Kubernetes deployment with new image tag: ${{ github.sha }} [skip ci]" 
           git push
        
       
