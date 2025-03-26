@@ -147,6 +147,8 @@ jobs:
           git add srpingboot-manifests/deployment.yaml
           git commit -m "Update Kubernetes deployment with new image tag: ${{ github.sha }} [skip ci]" || echo "No changes to commit"
           git push
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
           
         
